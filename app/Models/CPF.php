@@ -23,8 +23,8 @@ class CPF extends Model
         $cpf = $this->extrair_numeros_do_cpf_informado($cpf);     
         if (!$this->validar_total_numeros_cpf($cpf)) return false;
         if (!$this->validar_se_todos_numeros_digitos_repetidos_cpf($cpf)) return false;
-        if(!intval($cpf[9]) == $this->calcular_digitos_verificador($cpf, 9))return false;
-        if(!intval($cpf[10]) == $this->calcular_digitos_verificador($cpf, 10))return false;
+        if(!(intval($cpf[9]) === $this->calcular_digitos_verificador($cpf, 9))) return false;
+        if(!(intval($cpf[10]) === $this->calcular_digitos_verificador($cpf, 10))) return false;
         return true;
     }
 
